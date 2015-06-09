@@ -19,7 +19,7 @@ require_relative "entry.rb"
    end
 
   def remove_entry(entry)
-      @entries.delete_if {|index| entry == index}
+    @entries.delete_if {|index| entry == index}
   end
 
  end
