@@ -17,4 +17,9 @@ require_relative "entry.rb"
      end
      @entries.insert(index, Entry.new(name, phone, email))
    end
+
+  def remove_entry(entry)
+      @entries.delete_if {|index| entry == index}
+  end
+
  end
