@@ -20,6 +20,64 @@ class MenuController
 
         selection = gets.chomp.to_i
         puts "You picked #{selection}"
+    
+        case selection
+            when 1
+                system "clear"
+                view_all_entries
+                main_menu
+            when 2
+                system "clear"
+                create_entry
+                main_menu
+            when 3
+                system "clear"
+                search_entry
+                main_menu
+            when 4
+                system "clear"
+                read_csv
+                main_menu
+            when 5
+                system "clear"
+                puts "Goodbye, Please back again."
+                exit(0)
+            else
+                puts "Sorry, Your input number it's not valid, please try again."
+                main_menu
+        end
+    end
+
+    def view_all_entries
+        
+    end
+
+    def create_entry
+        
+        system "clear"
+
+        puts "New AdressBook entry"
+        print "Name: "
+        name = gets.chomp.capitalize
+
+        print "Phone Number: "
+        phone = gets.chomp
+
+        print "Email: "
+        email = gets.chomp.downcase
+
+        @address_book.add_entry(name, phone, email)
+        
+        system "clear"
+        
+        puts "New entry created"
+
+    end  
+    
+    def search_entry
+    end
+
+    def read_csv
     end
 
 end
