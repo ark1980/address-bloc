@@ -48,9 +48,48 @@ class MenuController
         end
     end
 
+
     def view_all_entries
-        
+        @address_book.entries.each do |entry|
+            system "clear"
+            puts entry.to_s
+
+            entry_submenu(entry)
+        end
+        system "clear"
+        puts "End of entries"
     end
+
+    def entry_submenu(entry)
+        puts "n - Next Entry"
+        puts "e - Edit Entry"
+        puts "d - Delete Entry"
+        puts "m - Main Menu"
+
+        selection = gets.chomp
+
+        case selection
+
+            when "n"
+
+            when "e"
+
+            when "d"
+
+            when "m"
+                system "clear"
+                main_menu
+            else
+                system "clear"
+                puts "#{selection} is not a valid input"
+                entry_submenu(entry)
+        end
+
+    end
+
+
+        
+
 
     def create_entry
         
