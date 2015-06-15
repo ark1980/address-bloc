@@ -93,4 +93,13 @@ RSpec.describe AddressBook do
 	    end
 
  	end
+
+ 	context ".import_from_second_csv" do
+
+ 		it "import from second csv file" do	
+ 			book.import_from_second_csv("entries_2.csv")
+ 			expect(import_from_second_csv).to eq (0)
+ 		end
+
+ 	end
 end
