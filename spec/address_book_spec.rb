@@ -42,7 +42,7 @@ RSpec.describe AddressBook do
 	context ".remove_entry" do
 
 		it "deletes only one entry from the address book" do
-		    #book.remove_entry(['Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com'])
+	#book.remove_entry(['Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com'])
 		    book.remove_entry(Array)
 		    expect(book.entries.size).to eq(0)   
   		end
@@ -62,44 +62,67 @@ RSpec.describe AddressBook do
 	       	book.import_from_csv("entries.csv")
 	# Check the first entry
 	       	entry_one = book.entries[0]
-
-	       	expect(entry_one.name).to eql "Bill"
-	       	expect(entry_one.phone_number).to eql "555-555-5555"
-	       	expect(entry_one.email).to eql "bill@blocmail.com"
+	       	check_entry(entry_one, "Bill", "555-555-5555", "bill@blocmail.com")
      	end
 
 	    it "imports the 2nd entry" do
 	       book.import_from_csv("entries.csv")
-	       # Check the second entry
+	# Check the second entry
 	       entry_two = book.entries[1]
+	       check_entry(entry_two, "Bob", "555-555-5555", "bob@blocmail.com")
 	    end
 	 
 	    it "imports the 3rd entry" do
 	       book.import_from_csv("entries.csv")
-	       # Check the third entry
+	# Check the third entry
 	       entry_three = book.entries[2]
+	       check_entry(entry_three, "Joe", "555-555-5555", "joe@blocmail.com")
 	    end
 	 
 	    it "imports the 4th entry" do
 	       book.import_from_csv("entries.csv")
-	       # Check the fourth entry
+	# Check the fourth entry
 	       entry_four = book.entries[3]
+	       check_entry(entry_four, "Sally", "555-555-5555", "sally@blocmail.com")
 	    end
 	 
 	    it "imports the 5th entry" do
 	       book.import_from_csv("entries.csv")
-	       # Check the fifth entry
+	# Check the fifth entry
 	       entry_five = book.entries[4]
+	       check_entry(entry_five, "Sussie", "555-555-5555", "sussie@blocmail.com")
 	    end
 
+	# import from entries_2.csv
+
+	    it "import the correct number of information" do
+	 		book.import_from_csv("entries_2.csv")
+	 		book_size = book.entries.size
+	 		expect(book_size).to eql 3
+	 	end
+
+	# Check the first entry from entries_2
+
+		it "it checks details of the first entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_one = book.entries[0]
+      check_entry(entry_one, "Ava", "777-777-7777", "ava@example.com")
+      
+     end
+
+     it "checks the details of second entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_two = book.entries[1]
+      check_entry(entry_two, "Ben", "888-888-8888", "ben@example.com")
+    end
+    
+    it "it checks details of the third entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_three = book.entries[2]
+      check_entry(entry_three, "Clair", "999-999-9999", "clair@example.com")
+      
+     end  
  	end
 
- 	context ".import_from_second_csv" do
-
- 		it "import from second csv file" do	
- 			book.import_from_second_csv("entries_2.csv")
- 			expect(import_from_second_csv).to eq (0)
- 		end
-
- 	end
+ 	
 end
