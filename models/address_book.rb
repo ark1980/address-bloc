@@ -37,5 +37,10 @@ class AddressBook
      return csv.count
   end
 
+# Search AddressBook for a specific entry by name
+  def binary_search(name)
+     return nil
+  end
+
 
 end
