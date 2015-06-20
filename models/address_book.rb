@@ -37,7 +37,7 @@ class AddressBook
      return csv.count
   end
 
-# Search AddressBook for a specific entry by name
+  # Search AddressBook for a specific entry by name
   
   def binary_search(name)
      
@@ -59,7 +59,27 @@ class AddressBook
     end
 
     return nil
-    
+
   end
+
+  # Search AddressBook for a specific entry by name(iterative_search)
+
+  def iterative_search(name)
+
+     i = 0
+
+     while i <= entries.length - 1
+      if name == entries[i]
+        return entries[i]
+      else
+        i += 1
+      end
+    end
+
+      return nil
+  end
+
+
+end
   
   
