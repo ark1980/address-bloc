@@ -13,9 +13,10 @@ class MenuController
         puts "Main Menu, #{@address_book.entries.count} entries"
         puts "1 - View all entries"
         puts "2 - Create an entry"
-        puts "3 - Search for an entry"
-        puts "4 - Import entries from a CSV"
-        puts "5 - Exit"
+        puts "3 - View Entry Number"
+        puts "4 - Search for an entry"
+        puts "5 - Import entries from a CSV"
+        puts "6 - Exit"
         print "Enter your selection: "
 
         selection = gets.chomp.to_i
@@ -30,15 +31,20 @@ class MenuController
                 system "clear"
                 create_entry
                 main_menu
+
             when 3
                 system "clear"
-                search_entry
+                view_entry_number
                 main_menu
             when 4
                 system "clear"
-                read_csv
+                search_entry
                 main_menu
             when 5
+                system "clear"
+                read_csv
+                main_menu
+            when 6
                 system "clear"
                 puts "Goodbye, Please back again."
                 exit(0)
@@ -59,6 +65,7 @@ class MenuController
         system "clear"
         puts "End of entries"
     end
+
 
     def entry_submenu(entry)
         puts "n - Next Entry"
@@ -85,10 +92,7 @@ class MenuController
                 entry_submenu(entry)
         end
 
-    end
-
-
-        
+    end   
 
 
     def create_entry
@@ -112,6 +116,23 @@ class MenuController
         puts "New entry created"
 
     end  
+
+    def view_entry_number
+        system "clear"
+        puts "Please enter your number: "
+        num = gets.chomp.to_i
+        num = num - 1
+        
+        if num.between?(0 ,@address_book.entries.count)
+            puts @address_book.entries[num]
+            puts "==================================================================="
+            else
+            puts "Please enter correct number"
+            puts "==================================================================="
+        end
+
+    end
+
     
     def search_entry
     end
